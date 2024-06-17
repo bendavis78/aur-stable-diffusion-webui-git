@@ -1,0 +1,20 @@
+[Unit]
+Description=Stable Diffusion Web UI
+After=network.target
+
+[Service]
+Type=simple
+User=sdwebui
+Group=sdwebui
+WorkingDirectory=/opt/stable-diffusion-webui
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=/etc/stable-diffusion-webui/webui.conf
+ExecStart=/bin/bash -c '\
+    /opt/stable-diffusion-webui/venv/bin/accelerate \
+    launch ${ACCELERATE_FLAGS} launch.py \
+    --data-dir /var/opt/stable-diffusion-webui \
+    ${WEBUI_FLAGS:+$WEBUI_FLAGS}'
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
