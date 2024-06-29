@@ -14,7 +14,9 @@ ExecStart=/bin/bash -c '\
     launch ${ACCELERATE_FLAGS} launch.py \
     --data-dir /var/opt/stable-diffusion-webui \
     ${WEBUI_FLAGS:+$WEBUI_FLAGS}'
-Restart=on-failure
+Restart=always
+StartLimitInterval=120
+StartLimitBurst=15
 
 [Install]
 WantedBy=multi-user.target
