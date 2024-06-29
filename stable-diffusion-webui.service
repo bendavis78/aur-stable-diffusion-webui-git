@@ -12,7 +12,7 @@ EnvironmentFile=/etc/stable-diffusion-webui/webui.conf
 ExecStart=/bin/bash -c '\
     /opt/stable-diffusion-webui/venv/bin/accelerate \
     launch ${ACCELERATE_FLAGS} launch.py \
-    --data-dir /var/opt/stable-diffusion-webui \
+    --data-dir /var/opt/stable-diffusion-webui/data \
     ${WEBUI_FLAGS:+$WEBUI_FLAGS}'
 Restart=always
 StartLimitInterval=120

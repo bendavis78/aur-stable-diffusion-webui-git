@@ -24,7 +24,7 @@ install="${pkgname}.install"
 noextract=("v1-5-pruned-emaonly.safetensors")
 sha1sums=(
     "SKIP"
-    "55138d4e359e77b230064f188803c311a0348add"
+    "aba2e154eb8f47a2ba5ddca33acfbed07c57c1ea"
     "f5bde2b6efa29c72f1e391135d40f25967427ac1"
 )
 options=('!strip')

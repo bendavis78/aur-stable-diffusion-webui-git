@@ -6,6 +6,7 @@ _appdataprefix="/var/opt"
 _apphome="${_appprefix}/${_appname}"
 _appdata="${_appdataprefix}/${_appname}"
 _model_url="https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors"
+_model_hash="3b2aa9f1e71b1de44d7df73a35ba1f7f64f5834a"
 
 pre_install() {
     echo "Creaing user sdwebui..."
@@ -34,10 +35,18 @@ _install() {
     # Downhload the default model 
     model_file=$(basename "${_model_url}")
     model_dir="${_appdata}/models/Stable-diffusion"
-    mkdir -p "${model_dir}"
-    echo "Downloading ${model_file}..."
-    wget --progress=bar:force:noscroll \
-          -O "${model_dir}/${model_file}" "${_model_url}" || return 1
+    current_hash=""
+    if [[ -f "${model_dir}/${model_file}" ]]; then
+        current_hash=$(sha1sum "${model_dir}/${model_file}" | cut -d ' ' -f 1)
+    fi
+    if [[ "${current_hash}" == "${_model_hash}" ]]; then
+        echo "stable-diffusion-v1.5 model exists and is up to date."
+    else
+        mkdir -p "${model_dir}"
+        echo "Downloading ${model_file}..."
+        wget --progress=bar:force:noscroll \
+              -O "${model_dir}/${model_file}" "${_model_url}" || return 1
+    fi
 
 }
 
