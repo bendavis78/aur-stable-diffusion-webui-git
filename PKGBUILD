@@ -5,7 +5,6 @@ _apprefix="/opt"
 _appdataprefix="/var/opt"
 
 pkgname="${_appname}-git"
-pkgver=v1.9.4.r0.feee37d75
 pkgrel=1
 pkgdesc="Stable Diffusion Web UI (AUTOMATIC1111)"
 arch=("x86_64")
@@ -30,13 +29,14 @@ sha1sums=(
 options=('!strip')
 
 pkgver() {
-	cd "$srcdir/${pkgname}"
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    cd "$srcdir/$pkgname"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
     # Install systemd service
     install -Dm644 "./$_appname.service" "$pkgdir/usr/lib/systemd/system/$_appname.service"
+    rm -rf "$pkgdir/opt/$_appname/.git"
 
     # Install the default config file to /usr/share/$_appname/webui.conf
     install -d "$pkgdir/usr/share/$_appname"
