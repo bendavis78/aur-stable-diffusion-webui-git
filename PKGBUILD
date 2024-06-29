@@ -5,6 +5,7 @@ _apprefix="/opt"
 _appdataprefix="/var/opt"
 
 pkgname="${_appname}-git"
+pkgver="1.9.4.r0.gfeee37d"
 pkgrel=1
 pkgdesc="Stable Diffusion Web UI (AUTOMATIC1111)"
 arch=("x86_64")
@@ -23,8 +24,8 @@ install="${pkgname}.install"
 noextract=("v1-5-pruned-emaonly.safetensors")
 sha1sums=(
     "SKIP"
-    "f6b4f95b9e580401acfc6151572d15edb990186e"
-    "59c7d218baa0c1577c3f739f01910a1d90da2071"
+    "55138d4e359e77b230064f188803c311a0348add"
+    "f5bde2b6efa29c72f1e391135d40f25967427ac1"
 )
 options=('!strip')
 
