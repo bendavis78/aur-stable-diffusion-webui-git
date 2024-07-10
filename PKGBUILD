@@ -6,7 +6,7 @@ _appdataprefix="/var/opt"
 
 pkgname="${_appname}-git"
 pkgver=1.9.4.r0.gfeee37d
-pkgrel=1
+pkgrel=2
 pkgdesc="Stable Diffusion Web UI (AUTOMATIC1111)"
 arch=("x86_64")
 url="https://github.com/AUTOMATIC1111/$_appname"

@@ -1,7 +1,7 @@
 pkgbase = stable-diffusion-webui-git
 	pkgdesc = Stable Diffusion Web UI (AUTOMATIC1111)
 	pkgver = 1.9.4.r0.gfeee37d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AUTOMATIC1111/stable-diffusion-webui
 	install = stable-diffusion-webui-git.install
 	arch = x86_64
