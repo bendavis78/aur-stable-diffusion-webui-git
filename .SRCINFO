@@ -16,7 +16,7 @@ pkgbase = stable-diffusion-webui-git
 	source = stable-diffusion-webui.service
 	source = webui.conf
 	sha1sums = SKIP
-	sha1sums = aba2e154eb8f47a2ba5ddca33acfbed07c57c1ea
-	sha1sums = f5bde2b6efa29c72f1e391135d40f25967427ac1
+	sha1sums = f7424d43daaa71f738b821ac158a13da14be9030
+	sha1sums = c99dd58ce69d9c35152d3c99af21e4dab552a450
 
 pkgname = stable-diffusion-webui-git
