@@ -52,18 +52,17 @@ _install() {
         wget --progress=bar:force:noscroll \
               -O "${model_dir}/${model_file}" "${_model_url}" || return 1
     fi
-
 }
 
 post_install() {
-    _install || echo -e "\nERROR: Failed to install dependencies\n"
+    _install || { echo -e "\nERROR: Failed to install dependencies\n"; return 1; }
 }
 
 post_upgrade() {
-    _install || echo -e "\nERROR: Failed to install dependencies\n"
+    _install || { echo -e "\nERROR: Failed to install dependencies\n"; return 1; }
 }
 
 post_remove() {
-    echo "Cleaning up virtual environment for $_appname..."
-    rm -rf "${_apphome}/venv"
+    echo "Removing ${_apphome}..."
+    rm -rf "${_apphome}"
 }

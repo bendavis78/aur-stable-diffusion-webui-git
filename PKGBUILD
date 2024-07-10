@@ -1,12 +1,12 @@
 # Maintainer: Ben Davis <bendavis78@gmail.com>
 
 _appname="stable-diffusion-webui"
-_apprefix="/opt"
+_appprefix="/opt"
 _appdataprefix="/var/opt"
 
 pkgname="${_appname}-git"
 pkgver=1.9.4.r0.gfeee37d
-pkgrel=2
+pkgrel=3
 pkgdesc="Stable Diffusion Web UI (AUTOMATIC1111)"
 arch=("x86_64")
 url="https://github.com/AUTOMATIC1111/$_appname"
@@ -42,12 +42,11 @@ package() {
     install -Dm644 "./webui.conf" "$pkgdir/usr/share/$_appname/webui.conf"
 
     # Copy source to app's home directory
-    parent_dir="$pkgdir${_apprefix}"  # /opt
-
-    install -d "$pkgdir${_apprefix}/$_appname"
+    install -d "$pkgdir${_appprefix}/$_appname"
     install -d "$pkgdir${_appdataprefix}/$_appname"
 
-    cp -R "$srcdir/${pkgname}/." "$pkgdir${_apprefix}/$_appname"
-    chmod 775 "$pkgdir${_apprefix}/$_appname"
-    chmod -R gu+rwX,go+r "$pkgdir${_apprefix}/$_appname"
+    cp -R "$srcdir/${pkgname}/." "$pkgdir${_appprefix}/$_appname"
+    rm -rf  "$pkgdir${_appprefix}/$_appname/.git" 
+    chmod 775 "$pkgdir${_appprefix}/$_appname"
+    chmod -R gu+rwX,go+r "$pkgdir${_appprefix}/$_appname"
 }
