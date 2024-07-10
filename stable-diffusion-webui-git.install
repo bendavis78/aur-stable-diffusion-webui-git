@@ -14,6 +14,11 @@ pre_install() {
 }
 
 _install() {
+    # Create dirs
+    mkdir -p "${_apphome}"
+    mkdir -p "${_appdata}"
+    mkdir -p "$/etc/${_appname}"
+
     # Ensure appropriate permissions
     chown -R sdwebui:sdwebui "${_apphome}" || return 1
     chown -R sdwebui:sdwebui "${_appdata}" || return 1
